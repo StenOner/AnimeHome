@@ -5,7 +5,9 @@ import { HomeIcon, SearchIcon, PlusIcon, StarIcon } from '@heroicons/react/solid
 const Header = () => {
     return (
         <div className='flex sticky bg-transparent top-0 z-[1000] items-center px-10 md:px-12 h-16'>
-            <Image src='/images/anime_logo.png' width={100} height={40} className='cursor-pointer' />
+            <Link href='/'>
+                <Image src='/images/anime_logo.png' width={100} height={40} className='cursor-pointer' />
+            </Link>
             <div className='hidden ml-10 mt-1 md:flex items-center space-x-6'>
                 <Link href='/'>
                     <a className='header-link group'>
