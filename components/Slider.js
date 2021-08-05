@@ -1,30 +1,38 @@
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import SwiperCore, { Autoplay, Navigation } from 'swiper/core'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import classes from './Slider.module.css'
+import 'swiper/swiper.min.css'
+import 'swiper/components/navigation/navigation.min.css'
+
+SwiperCore.use([Autoplay, Navigation])
 
 const Slider = () => {
     return (
         <section className='relative mt-7 shadow-2xl mx-auto'>
-            <Carousel
-                autoPlay
-                infiniteLoop
-                showStatus={false}
-                showIndicators={false}
-                showThumbs={false}
-                interval={5000}
+            <Swiper
+                className={classes['swiper-container']}
+                spaceBetween={30}
+                centeredSlides
+                navigation
+                autoplay={{
+                    'delay': 3000,
+                    'disableOnInteraction': false
+                }}
             >
-                <div>
-                    <img loading='lazy' src='/images/slider-1.jpg' alt='slider1' />
-                </div>
-                <div>
+                <SwiperSlide className={classes['swiper-slide']}>
+                    <img loading='lazy'src='/images/slider-1.jpg' alt='slider1' />
+                </SwiperSlide>
+                <SwiperSlide className={classes['swiper-slide']}>
                     <img loading='lazy' src='/images/slider-2.jpg' alt='slider2' />
-                </div>
-                <div>
+                </SwiperSlide>
+                <SwiperSlide className={classes['swiper-slide']}>
                     <img loading='lazy' src='/images/slider-3.jpg' alt='slider3' />
-                </div>
-                <div>
+                </SwiperSlide>
+                <SwiperSlide className={classes['swiper-slide']}>
                     <img loading='lazy' src='/images/slider-4.jpg' alt='slider4' />
-                </div>
-            </Carousel>
+                </SwiperSlide>
+            </Swiper>            
         </section>
     )
 }

@@ -6,20 +6,20 @@ const Header = () => {
     return (
         <div className='flex sticky bg-transparent top-0 z-[1000] items-center px-10 md:px-12 h-16'>
             <Image src='/images/anime_logo.png' width={100} height={40} className='cursor-pointer' />
-            <div className='hidden ml-10 md:flex items-center space-x-6'>
+            <div className='hidden ml-10 mt-1 md:flex items-center space-x-6'>
                 <Link href='/'>
                     <a className='header-link group'>
                         <HomeIcon className='h-4' />
                         <span className='span'>Hogar</span>
                     </a>
                 </Link>
-                <Link href='/buscar'>
+                <Link href='/search'>
                     <a className='header-link group'>
                         <SearchIcon className='h-4' />
                         <span className='span'>Buscar</span>
                     </a>
                 </Link>
-                <Link href='/ver-despues'>
+                <Link href='/watch-later'>
                     <a className='header-link group'>
                         <PlusIcon className='h-4' />
                         <span className='span'>Ver despues</span>
@@ -32,7 +32,36 @@ const Header = () => {
                     </a>
                 </Link>
             </div>
-            <button className='ml-auto uppercase border px-4 py-1.5 rounded font-medium tracking-wide hover:bg-white hover:text-black transition duration-200'>Login</button>
+            <div className='flex ml-8 mt-1 space-x-8 md:hidden'>
+                <Link href='/'>
+                    <a className='header-link group'>
+                        <span className='span'>
+                            <HomeIcon className='h-5' />
+                        </span>
+                    </a>
+                </Link>
+                <Link href='/search'>
+                    <a className='header-link group'>
+                        <span className='span'>
+                            <SearchIcon className='h-5' />
+                        </span>
+                    </a>
+                </Link>
+                <Link href='/watch-later'>
+                    <a className='header-link group'>
+                        <span className='span'>
+                            <PlusIcon className='h-5' />
+                        </span>
+                    </a>
+                </Link>
+                <Link href='/series'>
+                    <a className='header-link group'>
+                        <span className='span'>
+                            <StarIcon className='h-5' />
+                        </span>
+                    </a>
+                </Link>
+            </div>
         </div>
     )
 }
