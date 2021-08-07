@@ -11,8 +11,8 @@ export default function MyApp({ Component, pageProps }) {
         <title>AnimesHome</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='relative min-h-screen after:bg-home after:bg-center after:bg-no-repeat after:bg-fixed after:absolute after:inset-0'>
-        <Header />
+      <Header />
+      <main className='relative min-h-[calc(100vh-4rem)] after:bg-home after:bg-center after:bg-no-repeat after:bg-fixed after:absolute after:inset-0'>
         <Component {...pageProps} />
       </main>
     </>
