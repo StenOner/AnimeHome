@@ -1,9 +1,17 @@
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import ReactPlayer from 'react-player'
 import classes from './WatchChapter.module.css'
+import useLocalStorage from '../../../../hooks/use-localstorage'
 
 const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {}, previousChapter = null, nextChapter = null }) => {
+    const router = useRouter()
+    const { configuration, setLocalStorage } = useLocalStorage()
+    const redirectToSerie = (chapter) => {
+        if (chapter) router.push(`/series/${serie}/${chapter}`)
+    }
+
     return (
         <div className='flex flex-col m-10'>
             <div className='flex mb-6 z-[900]'>
@@ -29,9 +37,9 @@ const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {},
                                 ]
                             }
                         }}
-                        playing
+                        playing={configuration.autoplay}
                         controls
-                        onEnded={() => alert('yarita')}
+                        onEnded={() => configuration.autonext && redirectToSerie(nextChapter)}
                     />
                 )}
             </div>
