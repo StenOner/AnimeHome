@@ -11,6 +11,26 @@ const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {},
     const redirectToSerie = (chapter) => {
         if (chapter) router.push(`/series/${serie}/${chapter}`)
     }
+    const updateAutoPlay = () => {
+        console.log('yara', !configuration.playerConfiguration.autoplay);
+        setLocalStorage({
+            ...configuration.playerConfiguration,
+            autoplay: !configuration.playerConfiguration.autoplay
+        })
+    }
+    const updateAutoNext = () => {
+        setLocalStorage({
+            ...configuration.playerConfiguration,
+            autonext: !configuration.playerConfiguration.autonext
+        })
+    }
+    const updateEnlarge = () => {
+        setLocalStorage({
+            ...configuration.playerConfiguration,
+            enlarge: !configuration.playerConfiguration.enlarge
+        })
+    }
+    console.log(configuration);
 
     return (
         <div className='flex flex-col m-10'>
@@ -37,13 +57,27 @@ const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {},
                                 ]
                             }
                         }}
-                        playing={configuration.autoplay}
                         controls
-                        onEnded={() => configuration.autonext && redirectToSerie(nextChapter)}
+                        playing={configuration.playerConfiguration?.autoplay}
+                        onEnded={() => configuration.playerConfiguration?.autonext && redirectToSerie(nextChapter)}
                     />
                 )}
             </div>
-            <div className='flex flex-row z-[900]'>
+            {configuration.playerConfiguration && <div className='flex justify-center content-center z-[900]'>
+                <div className='mr-1 p-[0.2rem] cursor-pointer border-[1px] border-green-200 rounded-sm' onClick={updateAutoPlay}>
+                    <input type='checkbox' className='cursor-pointer' checked={configuration.playerConfiguration.autoplay} readOnly />
+                    <span> Auto Iniciar</span>
+                </div>
+                <div className='mr-1 p-[0.2rem] cursor-pointer border-[1px] border-green-200 rounded-sm' onClick={updateAutoNext}>
+                    <input type='checkbox' className='cursor-pointer' checked={configuration.playerConfiguration.autonext} readOnly />
+                    <span> Auto Siguiente</span>
+                </div>
+                <div className='mr-1 p-[0.2rem] cursor-pointer border-[1px] border-green-200 rounded-sm' onClick={updateEnlarge}>
+                    <input type='checkbox' className='cursor-pointer' checked={configuration.playerConfiguration.enlarge} readOnly />
+                    <span> Enlargar</span>
+                </div>
+            </div>}
+            <div className='flex z-[900]'>
                 {previousChapter && (
                     <Link href={`/series/${serie}/${previousChapter}`}>
                         <a className='mr-auto hover:underline'>
