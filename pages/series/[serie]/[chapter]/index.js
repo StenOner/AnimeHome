@@ -12,7 +12,6 @@ const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {},
         if (chapter) router.push(`/series/${serie}/${chapter}`)
     }
     const updateAutoPlay = () => {
-        console.log('yara', !configuration.playerConfiguration.autoplay);
         setLocalStorage({
             ...configuration.playerConfiguration,
             autoplay: !configuration.playerConfiguration.autoplay
@@ -30,8 +29,7 @@ const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {},
             enlarge: !configuration.playerConfiguration.enlarge
         })
     }
-    console.log(configuration);
-
+    
     return (
         <div className='flex flex-col m-10'>
             <div className='flex mb-6 z-[900]'>
