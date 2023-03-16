@@ -1,8 +1,9 @@
 import axios from 'axios'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import ReactPlayer from 'react-player'
 import classes from './WatchChapter.module.css'
-import useLocalStorage from '../../../../hooks/use-localstorage'
+import useLocalStorage from '@/hooks/use-localstorage'
 
 const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {}, previousChapter = null, nextChapter = null }) => {
     const router = useRouter()
@@ -33,9 +34,9 @@ const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {},
         <div className='flex flex-col m-10'>
             <div className='flex mb-6 z-[900]'>
                 <span className='text-4xl capitalize'>
-                    <a href={`series/${serie}`}>
+                    <Link href={`series/${serie}`}>
                         {serie.split('-').join(' ')}
-                    </a>
+                    </Link>
                     &nbsp;/&nbsp;
                     {chapter.substring(0, chapter.lastIndexOf('.'))}
                 </span>
@@ -82,14 +83,14 @@ const WatchChapter = ({ serie = '', chapter = '', videoUrl = '', subtitles = {},
             </div>}
             <div className='flex z-[900]'>
                 {previousChapter && (
-                    <a href={`/series/${serie}/${previousChapter}`} className='mr-auto hover:underline'>
+                    <Link href={`/series/${serie}/${previousChapter}`} className='mr-auto hover:underline'>
                         {previousChapter}
-                    </a>
+                    </Link>
                 )}
                 {nextChapter && (
-                    <a href={`/series/${serie}/${nextChapter}`} className='ml-auto hover:underline'>
+                    <Link href={`/series/${serie}/${nextChapter}`} className='ml-auto hover:underline'>
                         {nextChapter}
-                    </a>
+                    </Link>
                 )}
             </div>
         </div>

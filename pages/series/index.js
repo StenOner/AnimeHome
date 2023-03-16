@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Link from 'next/link'
 
 const Series = ({ series = [], error = '' }) => {
     const errorElement = (
@@ -17,9 +18,9 @@ const Series = ({ series = [], error = '' }) => {
                 {(error || series.length < 0) && errorElement}
                 {series.map((serie) => (
                     <div className='flex w-[20vw] mb-6 ml-6' key={Math.random().toString()}>
-                        <a href={`/series/${serie}`} className='cursor-pointer capitalize hover:underline'>
+                        <Link href={`/series/${serie}`} className='cursor-pointer capitalize hover:underline'>
                             {serie.split('-').join(' ')}
-                        </a>
+                        </Link>
                     </div>
                 ))}
             </div>

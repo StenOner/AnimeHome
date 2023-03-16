@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Link from 'next/link'
 
 const SerieDetail = ({ serie = '', chapters = [], error = '' }) => {
     const errorElement = (
@@ -15,9 +16,9 @@ const SerieDetail = ({ serie = '', chapters = [], error = '' }) => {
                 <ul>
                     {chapters.map((chapter) => (
                         <li className='' key={Math.random().toString()}>
-                            <a href={`/series/${serie}/${chapter}`} className='cursor-pointer hover:underline'>
+                            <Link href={`/series/${serie}/${chapter}`} className='cursor-pointer hover:underline'>
                                 {chapter}
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>

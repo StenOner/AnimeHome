@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Link from 'next/link'
 import { useRef, useState } from 'react'
 
 const Search = ({ series = [], error = '' }) => {
@@ -20,9 +21,9 @@ const Search = ({ series = [], error = '' }) => {
                     <div className='flex flex-row flex-wrap'>
                         {filteredSeries.map((serie) => (
                             <div key={Math.random().toString()} className='ml-6 mb-6 w-[20vw]'>
-                                <a href={`/series/${serie}`} className='capitalize hover:underline'>
+                                <Link href={`/series/${serie}`} className='capitalize hover:underline'>
                                     {serie.split('-').join(' ')}
-                                </a>
+                                </Link>
                             </div>
                         ))}
                     </div>
